@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ListIterator;
+
+public class IteratorReplacer {
+    // Instance variables
+    private ArrayList<String> list;
+    private String toRemove;
+    private String replaceWith;
+
+    // Constructor
+    public IteratorReplacer(String line, String toRemove, String replaceWith) {
+        // initialize the instance variables
+        this.list = new ArrayList<>(Arrays.asList(line.split(" ")));
+        this.toRemove = toRemove;
+        this.replaceWith = replaceWith;
+    }
+
+    // Update methods
+    public void setTest(String line, String toRemove, String replaceWith) {
+        // set new values for the instance variables
+        this.list = new ArrayList<>(Arrays.asList(line.split(" ")));
+        this.toRemove = toRemove;
+        this.replaceWith = replaceWith;
+    }
+
+    public void replace() {
+        // use an Iterator to remove all instances of `toRemove` from `list`
+        ListIterator<String> it = list.listIterator();
+        while (it.hasNext()) {
+            if (it.next().equals(toRemove)) {
+                it.set(replaceWith);
+            }
+        }
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        // return the list in String format
+        return "[" + String.join(", ", list) + "]";
+    }
+
+    // main method
+    public static void main(String[] args) {
+        IteratorReplacer test = new IteratorReplacer("a b c a b c", "a", "+");
+        test.replace();
+        System.out.println(test);
+
+        test.setTest("a b c d e f g h i j x x x x", "x", "7");
+        test.replace();
+        System.out.println(test);
+
+        test.setTest("1 2 3 4 5 6 a b c a b c", "b", "#");
+        test.replace();
+        System.out.println(test);
+    }
+}
