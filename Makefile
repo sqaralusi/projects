@@ -1,2 +1,2 @@
-patient: util.cpp patient.cpp
-	g++ util.h util.cpp patient.cpp -o patient
+pig: util.cpp pig.cpp
+	g++ util.h util.cpp pig.cpp -o pig

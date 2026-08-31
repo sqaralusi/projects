@@ -10,7 +10,7 @@ void Error(string message) {
     exit(-1);
 }
 
-string readLine( string prompt)
+string readLine(const string prompt)
 {
     cout << prompt;
     string line;
@@ -128,7 +128,7 @@ static void initRandomSeed() {
     static bool initialized = false;
     if (!initialized) {
         srand(int(time(0)));
-        rand();
+        rand(); 
         initialized = true;
     }
 }
